@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body *ngIf="Blog">
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+
+        <!-- Title -->
+        <h1 class="mt-4">{{Blog[0].title}}</h1>
+
+        <!-- Author -->
+        <p class="lead">
+          by {{Blog[0].author | uppercase}}
+        </p>
+
+        <hr>
+
+        <!-- Date/Time -->
+        <p>Posted on {{Blog[0].created | date}}</p>
+
+        <hr>
+
+        <!-- Preview Image -->
+        <img class="img-fluid rounded" src="./assets/paper.jpg" alt="">
+
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead">{{Blog[0].description}}</p>
+
+
+        <blockquote class="blockquote">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer class="blockquote-footer">Someone famous in
+            <cite title="Source Title">Source Title</cite>
+          </footer>
+        </blockquote>
+
+        <hr>
+
+
+        <div class="row pad" *ngIf="Blog">
+          <div class="col-md-4 pad-button">
+        
+            <a class="btn btn-primary" [routerLink]="['/edit',Blog[0].blogId]">Edit </a>
+        
+          </div>
+          <div class="col-md-4 pad-button">
+        
+            <a class="btn btn-danger" (click)="deleteMethod()">Delete </a>
+        
+          </div>
+          <div class="col-md-4 pad-button">
+        
+            <a class="btn btn-warning" (click)="goBackToPreviousPage()">Go Back </a>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+        <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Search</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-append">
+                <button class="btn btn-secondary" type="button">Go!</button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Categories</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0" *ngFor="let category of blogCategories">
+                  <li>
+                    <a style="text-decoration:none" click="#">{{category}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Side Widget</h5>
+          <div class="card-body">
+            You can put anything you want inside of these side widgets. They are easy to use, and feature the new
+            Bootstrap 4 card containers!
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+
+
+</body>
+
+</html>
+
+
+
+
+
+<!--<div class="container">
+  <div class="row" *ngIf="Blog">
+    <div class="col-md-12">
+      <h2>{{Blog[0].title}}</h2>
+      <small>blog number - {{Blog[0].blogId}}</small>
+      <p>posted by {{Blog[0].author}} on {{Blog[0].created | date}}</p>
+      <p *ngIf="Blog[0].tags.length>0">tags : <span
+          *ngFor="let tag of Blog[0].tags;let first=first;let last=last">{{tag}}{{last ? '' : ', '}}</span></p>
+      <hr>
+      <div [innerHtml]="Blog[0].bodyHtml"></div>
+      <hr>
+      <hr>
+      <div>{{Blog[0].description}}</div>
+      <hr>
+      <h5>category - {{Blog[0].category}}</h5>
+    </div>
+  </div>
+  <hr>
+  <div class="row" *ngIf="Blog">
+    <div class="col-md-4">
+
+      <a class="btn btn-primary" [routerLink]="['/edit',Blog[0].blogId]">Edit </a>
+
+    </div>
+    <div class="col-md-4">
+
+      <a class="btn btn-danger" (click)="deleteMethod()">Delete </a>
+
+    </div>
+    <div class="col-md-4">
+
+      <a class="btn btn-warning" (click)="goBackToPreviousPage()">Go Back </a>
+    </div>
+  </div>
+
+</div>-->

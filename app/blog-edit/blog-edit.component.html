@@ -1,0 +1,40 @@
+<div class="form">
+ <h3>Edit Blog</h3>
+ <form #editBlogForm="ngForm" (ngSubmit)="editBlogMethod()">
+    <div class="form-group">
+      <label for="name">Title</label>
+      <input type="text" class="form-control" id="blogTitle" [(ngModel)]=" blogTitle" name="blogTitle" placeholder="title"
+      >
+    </div>
+    <div class="form-group">
+      <label for="name">Author</label>
+      <input type="text" class="form-control" id="blogAuthor" required [(ngModel)]="blogAuthor" name="blogAuthor" placeholder="author"
+      required>
+    </div>
+    <div class="form-group">
+      <label for="name">Description</label>
+      <input type="text" class="form-control" id="blogDescription" [(ngModel)]="blogDescription" name="blogDescription" placeholder="description"
+      >
+    </div>
+    <div class="form-group">
+        <label for="name">Category</label>
+        <select type="text" class="form-control" id="blogCategory"  [(ngModel)]="blogCategory" #category="ngModel" name="blogCategory" >
+        <option *ngFor="let category of possibleCategories" [value]="category">{{category}}</option>
+      </select>
+    </div>
+    <div class="row" >
+      <div class="col-md-4">
+  
+        <button type="submit" class="btn btn-success" [disabled]="!editBlogForm.form.valid">Submit</button>
+    </div>
+      <div class="col-md-6">
+  
+        <a class="btn btn-warning" (click)="goBackToPreviousPage()">Go Back </a>
+      </div>
+    </div>
+ 
+     
+
+</form>
+</div>
+

@@ -1,0 +1,83 @@
+<section class="pad">
+  <div class="container">
+    <div class="row" style="text-align:center">
+        <div class="col-md-12" style="font-size: 22px;"><h1>All Blogs</h1></div>
+    </div>
+</div>
+
+<div class="container pad-s">
+  <div class="row row-cols-1 row-cols-md-2 g-4" *ngIf="blogs.length>0">
+    <div class="col pad-s" *ngFor="let blog of allBlogs">
+      <div class="card-deck">
+        <div class="card" style="width: 18rem;">
+          <img class="img-thumbnail" style="height: 12rem;" src="./assets/paper.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{blog.title | uppercase}}</h5>
+            <p class="card-text">{{blog.description}}</p>
+            <p class="card-text">Posted on {{blog.created}} <br /> by {{blog.author}}</p>
+            <a class="btn btn-primary" style="align-self:center" [routerLink]="['/blog',blog.blogId]" role="button">Read</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+</section>
+ 
+ <!-- Comments Form -->
+ <form>
+ <div class="card my-4">
+  <h5 class="card-header">Leave a Comment:</h5>
+  <div class="card-body">
+    <form #createCommentForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <textarea class="form-control" rows="3" [(ngModel)]="comment" type='text' [ngModelOptions]="{standalone: true}"></textarea>
+      </div>
+      <div>
+       <h5>Commented by:</h5>
+      <input class="form-group form-control" [(ngModel)]="commentedBy" type='text' [ngModelOptions]="{standalone: true}">
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!createCommentForm.form.valid">Submit</button>
+    </form>
+  </div>
+</div>
+</form>
+<!-- Single Comment -->
+
+<div class="media mb-4" *ngFor="let comment of allComments">
+  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+  <div class="media-body">
+    <h5 class="mt-0">{{comment.commentedBy}}</h5>
+    {{comment.comments}}
+  </div>
+</div>
+
+
+  
+
+ 
+
+
+
+ <!-- Footer -->
+ <footer class="py-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+  </div>
+  <!-- /.container -->
+</footer>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+

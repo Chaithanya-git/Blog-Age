@@ -1,0 +1,10 @@
+.align{
+    position: relative;
+    top: 1vh;
+    left: 5vw;
+    right:auto;
+    bottom: 10vw;
+    min-width: 20%;
+    max-width: 100%;
+    padding-top: 68px;
+}

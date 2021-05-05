@@ -1,0 +1,30 @@
+<form class="align">
+  <h3>Post a Blog</h3>
+<div style="width: 400px;">
+  <form #createBlogForm="ngForm" (ngSubmit)="createBlog()">
+    <div class="form-group">
+      <label for="name">Title</label>
+      <input type="text" class="form-control" id="blogTitle" required [(ngModel)]="blogTitle" name="blogTitle" placeholder="Title"
+      required>
+    </div>
+    <div class="form-group">
+      <label for="name">Blog Description</label>
+      <textarea type="text" class="form-control" id="blogDescription" required [(ngModel)]="blogDescription" name="blogDescription" placeholder="Please Enter the Description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="name">Author</label>
+      <input type="text" class="form-control" id="blogAuthor" required [(ngModel)]="blogAuthor" name="blogAuthor" placeholder="author"
+      required>
+    </div>
+    <div class="form-group">
+        <label for="name">Category</label>
+        <select type="text" class="form-control" id="category" required [(ngModel)]="blogCategory" #category="ngModel" name="category" >
+        <option *ngFor="let category of blogCategories" [value]="category" >{{category}}</option>
+      </select>
+        </div>
+      <div>
+    <button type="submit" class="btn btn-success" [disabled]="!createBlogForm.form.valid">Submit</button>
+  </div>
+</form> 
+
+
